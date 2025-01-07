@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google reCAPTCHA</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    function onCaptchaSuccess() {
+      // URL bạn muốn chuyển đến
+      window.location.href = "https://example.com/success-page";
+    }
+  </script>
+</head>
+<body>
+  <h1>reCAPTCHA Example</h1>
+  <form id="captcha-form" action="your-server-endpoint" method="POST">
+    <!-- reCAPTCHA widget -->
+    <div
+      class="g-recaptcha"
+      data-sitekey="6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-"
+      data-callback="onCaptchaSuccess">
+    </div>
+  </form>
+</body>
+</html>
