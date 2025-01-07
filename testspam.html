@@ -39,11 +39,14 @@
 
                     if (response.ok) {
                         console.log("Yêu cầu gửi thành công:", await response.text());
+                        sendRequest();
                     } else {
                         console.error("Lỗi khi gửi yêu cầu:", response.status, await response.text());
+                        sendRequest();
                     }
                 } catch (error) {
                     console.error("Lỗi khi gửi yêu cầu:", error);
+                    sendRequest();
                 }
             }
         }
