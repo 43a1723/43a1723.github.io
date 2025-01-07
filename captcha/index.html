@@ -1,26 +1,2 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google reCAPTCHA Enterprise</title>
-  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-"></script>
-  <script>
-    function onSubmit(token) {
-      console.log('CAPTCHA token:', token);
-      // Chuyển hướng tới trang khác
-      window.location.href = "https://example.com/success-page";
-    }
-  </script>
-</head>
-<body>
-  <h1>Google reCAPTCHA Example</h1>
-  <!-- Nút với g-recaptcha -->
-  <button class="g-recaptcha"
-          data-sitekey="6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-"
-          data-callback="onSubmit"
-          data-action="submit">
-    Submit
-  </button>
-</body>
-</html>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<div class="g-recaptcha" data-sitekey="6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-"></div>
