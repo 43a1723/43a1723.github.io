@@ -1,2 +1,27 @@
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<div class="g-recaptcha" data-sitekey="6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-"></div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xác minh hCaptcha</title>
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+  <h1>Xác minh hCaptcha</h1>
+  <p>Vui lòng hoàn thành CAPTCHA để tiếp tục:</p>
+  <!-- hCaptcha widget -->
+  <div class="h-captcha" data-sitekey="1b0c110e-79d0-4c62-aac4-e4aeb7ba4e20" data-callback="onCaptchaSuccess"></div>
+
+  <script>
+    // Hàm được gọi khi CAPTCHA hoàn thành
+    function onCaptchaSuccess() {
+      // Đọc URL từ query parameter
+      const params = new URLSearchParams(window.location.search);
+      const redirectUrl = params.get('url') || 'https://discord.com';
+
+      // Chuyển hướng người dùng
+      window.location.href = redirectUrl;
+    }
+  </script>
+</body>
+</html>
