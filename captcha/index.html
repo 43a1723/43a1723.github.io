@@ -3,24 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google reCAPTCHA</title>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <title>Google reCAPTCHA Enterprise</title>
+  <!-- Google reCAPTCHA Enterprise -->
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-"></script>
   <script>
-    function onCaptchaSuccess() {
-      // URL bạn muốn chuyển đến
-      window.location.href = "https://example.com/success-page";
+    // Tự động chạy reCAPTCHA khi tải trang
+    function executeCaptcha() {
+      grecaptcha.enterprise.execute('6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-', {action: 'submit'}).then(function (token) {
+        // Gửi token tới server hoặc thực hiện chuyển trang
+        console.log('CAPTCHA token:', token);
+        // Ví dụ: Chuyển đến URL khác sau khi xác thực
+        window.location.href = "https://example.com/success-page";
+      }).catch(function (error) {
+        console.error('CAPTCHA Error:', error);
+      });
     }
+    
+    // Gọi hàm executeCaptcha khi trang đã tải
+    document.addEventListener('DOMContentLoaded', executeCaptcha);
   </script>
 </head>
 <body>
-  <h1>reCAPTCHA Example</h1>
-  <form id="captcha-form" action="your-server-endpoint" method="POST">
-    <!-- reCAPTCHA widget -->
-    <div
-      class="g-recaptcha"
-      data-sitekey="6LdPR7AqAAAAAMUlh8fg3FTUFqpcjJM-vTzNZCa-"
-      data-callback="onCaptchaSuccess">
-    </div>
-  </form>
+  <h1>reCAPTCHA Enterprise Example</h1>
 </body>
 </html>
