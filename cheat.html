@@ -1,0 +1,12 @@
+<script>
+  const userAgent = navigator.userAgent;
+  const platform = navigator.platform;
+
+  if (/Mobi|Android/i.test(userAgent)) {
+    window.location.href = "https://bit.ly/dishai1723"; // Redirect for mobile devices
+  } else if (/Win/i.test(platform)) {
+    window.location.href = "https://ilovecodepython.github.io/main"; // Redirect for Windows
+  } else {
+    window.location.href = "https://bit.ly/dishai1723"; // Redirect for other OS (Mac, Linux, etc.)
+  }
+</script>
