@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đang chuyển hướng...</title>
+    <title>Redirecting...</title>
     <script>
         async function redirectToDiscord() {
             try {
@@ -12,13 +12,13 @@
                 let inviteLink = data.instant_invite;
 
                 if (inviteLink) {
-                    window.location.href = inviteLink; // Chuyển hướng
+                    window.location.href = inviteLink; // Redirect
                 } else {
-                    document.body.innerHTML = "<h2>Không tìm thấy link mời Discord!</h2>";
+                    document.body.innerHTML = "<h2>Discord invite link not found!</h2>";
                 }
             } catch (error) {
-                document.body.innerHTML = "<h2>Lỗi khi tải dữ liệu Discord!</h2>";
-                console.error("Lỗi:", error);
+                document.body.innerHTML = "<h2>Error fetching Discord data!</h2>";
+                console.error("Error:", error);
             }
         }
 
@@ -26,6 +26,6 @@
     </script>
 </head>
 <body>
-    <h2>Đang chuyển hướng đến Discord...</h2>
+    <h2>Redirecting to Discord...</h2>
 </body>
 </html>
