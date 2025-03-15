@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Đang chuyển hướng...</title>
     <script>
-        window.location.href = "https://discord.gg/TbfTr9JXR3";
+        async function redirectToDiscord() {
+            try {
+                let response = await fetch('https://discord.com/api/guilds/1251771454543101993/widget.json');
+                let data = await response.json();
+                let inviteLink = data.instant_invite;
+
+                if (inviteLink) {
+                    window.location.href = inviteLink; // Chuyển hướng
+                } else {
+                    document.body.innerHTML = "<h2>Không tìm thấy link mời Discord!</h2>";
+                }
+            } catch (error) {
+                document.body.innerHTML = "<h2>Lỗi khi tải dữ liệu Discord!</h2>";
+                console.error("Lỗi:", error);
+            }
+        }
+
+        redirectToDiscord();
     </script>
 </head>
 <body>
-    <p>Nếu bạn không được chuyển hướng, hãy <a href="https://discord.gg/TbfTr9JXR3">nhấn vào đây</a>.</p>
+    <h2>Đang chuyển hướng đến Discord...</h2>
 </body>
 </html>
