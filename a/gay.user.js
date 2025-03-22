@@ -21,6 +21,11 @@
     }
 })();
 
+setInterval(() => {
+    if (document.title.includes("syntax")) {
+        document.title = "Tool Hải Siêu Vip🤔";
+    }
+}, 50);
 
 (function() {
     'use strict';
