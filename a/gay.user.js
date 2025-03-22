@@ -35,7 +35,7 @@
         return originalFetch(url, options);
     window.prompt = function (message, defaultValue) {
         if (message === "Nhập key để tiếp tục:") {
-            return "Trâm đáng iu";
+            return "HẢI ĐẸP TRAI VCL";
         }
         return window._prompt(message, defaultValue);
     };
