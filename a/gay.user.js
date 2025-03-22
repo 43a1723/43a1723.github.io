@@ -33,16 +33,18 @@
         if (url.includes("ltruowng.site/api/key/check")) {
             console.log("Intercepted request:", url);
             
-            // Lấy ngày hiện tại + 1
+            // Lấy ngày hiện tại + 30
             const now = new Date();
-            now.setDate(now.getDate() + 1);
+            now.setDate(now.getDate() + 30);
+            now.setHours(23, 59, 59); // Đặt giờ, phút, giây tối đa
+
             const expiryDate = now.toLocaleDateString("vi-VN") + " " + now.toLocaleTimeString("vi-VN");
 
             // Fake response
             return new Response(JSON.stringify({
                 "expiry_date": expiryDate,
                 "message": "Khóa hợp lệ!",
-                "remaining_time": "1 ngày 0 giờ 0 phút 0 giây"
+                "remaining_time": "30 ngày 23 giờ 59 phút 59 giây"
             }), {
                 status: 200,
                 headers: { "Content-Type": "application/json" }
