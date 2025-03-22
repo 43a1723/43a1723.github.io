@@ -10,6 +10,16 @@
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==
+
+(function() {
+    'use strict';
+
+    if (!localStorage.getItem("visited_alert")) {
+        alert("discord:inotnigga # hạn sử dụng vô tận");
+        localStorage.setItem("visited_alert", "true");
+    }
+})();
+
 class FixedDate extends Date {
   constructor() {
     super(0); // Không quan trọng giá trị này
